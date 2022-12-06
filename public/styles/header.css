@@ -1,10 +1,16 @@
 header {
   display: flex;
-  padding-top: 120px;
-  height: 400px;
+  padding-top: 120px; 
+  height: 520px;
   width: 100%;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: rgba(239, 238, 238, 0.906);
   background-image: url(http://www.transparenttextures.com/patterns/soft-circle-scales.png);
+}
+
+.name {
+  display: flex;
+  justify-content: center;
 }
