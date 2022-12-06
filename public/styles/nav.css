@@ -1,3 +1,28 @@
- nav {
-  font-family: 'Bungee', cursive;
- }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
+  background-color: #4056a1;
+  color: #ffffff;
+  padding: 1.5em;
+  font-family: "Bungee", cursive;
+  font-size: 40px;
+}
+
+div i {
+  color: red;
+}
+
+.new-tweet {
+  margin-bottom: 0;
+}
+
+.right-side {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 22px;
+}
