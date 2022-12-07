@@ -1,7 +1,6 @@
 .new-tweet {
   display: flex;
-  margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 50px;
   justify-self: center;
   align-items: center;
 }
@@ -31,6 +30,6 @@
   outline: none;
   background-color: #f4f1ec;
   border-bottom: solid rgb(0, 0, 0);
-  height: 35px;
+  height: 45px;
   width: 800px;
 }

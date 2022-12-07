@@ -25,6 +25,7 @@ div i {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 22px;
 }
