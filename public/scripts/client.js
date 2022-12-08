@@ -1,4 +1,11 @@
 $(document).ready(() => {
+
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+  
   const createTweetElement = (data) => {
     let $tweet = $(`
   <article>
@@ -9,7 +16,7 @@ $(document).ready(() => {
     </div>
     <a class="right-side">${data.user.handle}</a>
   </header>
-  <p>${data.content.text}</p>
+  <p>${escape(data.content.text)}</p>
   <footer>
     <time class="left-side">${timeago.format(data.created_at)}</time>
     <div class="icons">
@@ -49,7 +56,7 @@ $(document).ready(() => {
     } else if (charLength > maxCharacter) {
       return alert("Oops too many characters, please remove some!");
     } else {
-      const serialized = $(this).serialize();
+      let serialized = $(this).serialize();
       console.log(serialized);
       $.post("/tweets", serialized);
       loadTweets();
