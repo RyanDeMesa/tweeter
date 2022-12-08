@@ -3,6 +3,7 @@
   padding-top: 50px;
   justify-self: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .new-tweet div {
@@ -31,4 +32,13 @@
   border-bottom: solid rgb(0, 0, 0);
   height: 45px;
   width: 800px;
+}
+
+.error {
+  width: 75%;
+  color: red;
+  margin-bottom: 2em;
+  margin-top: 1em;
+  border: 3px solid red;
+  padding: 1em;
 }

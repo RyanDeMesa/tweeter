@@ -44,6 +44,9 @@ $(document).ready(() => {
     });
   };
 
+
+  $(".error").slideUp(0);
+
   loadTweets();
 
   $("#tweet-form").submit(function (event) {
@@ -52,13 +55,17 @@ $(document).ready(() => {
     const charLength = $(this).find("#tweet-text").val().length;
 
     if (charLength === 0) {
-      return alert("Oops! Your tweet is empty!");
+      $(".error").html("<i class='fa-solid fa-triangle-exclamation'></i> &emsp;Oops! Say something! &emsp;<i class='fa-solid fa-triangle-exclamation'></i>");
+      $(".error").slideDown(400);
+      
     } else if (charLength > maxCharacter) {
-      return alert("Oops too many characters, please remove some!");
+      $(".error").html("<i class='fa-solid fa-triangle-exclamation'></i> &emsp;Oops! Too many characters! &emsp;<i class='fa-solid fa-triangle-exclamation'></i>");
+      $(".error").slideDown(400);
     } else {
       let serialized = $(this).serialize();
       console.log(serialized);
       $.post("/tweets", serialized);
+      $(".error").slideUp(0);
       loadTweets();
     }
   });
