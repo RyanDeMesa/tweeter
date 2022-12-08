@@ -1,7 +1,6 @@
 $(document).ready(() => {
-  
-const createTweetElement = (data) => {
-  let $tweet = $(`
+  const createTweetElement = (data) => {
+    let $tweet = $(`
   <article>
   <header>
     <div class="left-side">
@@ -20,33 +19,40 @@ const createTweetElement = (data) => {
     </div>
   </footer>
   </article>`);
-  return $tweet;
-};
+    return $tweet;
+  };
 
-const renderTweets = (tweets) => {
-  for (let index in tweets) {
-    const render = createTweetElement(tweets[index])
-  $('.tweets-container').prepend(render);
-  console.log(render);
-  }
-}
+  const renderTweets = (tweets) => {
+    for (let index in tweets) {
+      const render = createTweetElement(tweets[index]);
+      $(".tweets-container").prepend(render);
+      console.log(render);
+    }
+  };
 
-const loadTweets = () => {
-  $.ajax("/tweets", { method: "GET" }).then(function (tweets) {
-    renderTweets(tweets)
-    console.log("Success: ", tweets);
+  const loadTweets = () => {
+    $.ajax("/tweets", { method: "GET" }).then(function (tweets) {
+      renderTweets(tweets);
+      console.log("Success: ", tweets);
+    });
+  };
+
+  loadTweets();
+
+  $("#tweet-form").submit(function (event) {
+    event.preventDefault();
+    const maxCharacter = 140;
+    const charLength = $(this).find("#tweet-text").val().length;
+
+    if (charLength === 0) {
+      return alert("Oops! Your tweet is empty!");
+    } else if (charLength > maxCharacter) {
+      return alert("Oops too many characters, please remove some!");
+    } else {
+      const serialized = $(this).serialize();
+      console.log(serialized);
+      $.post("/tweets", serialized);
+      loadTweets();
+    }
   });
-};
-
-loadTweets();
-
-$("#tweet-form").submit(function(event) {
-  event.preventDefault();
-  const serialized = $(this).serialize();
-  console.log(serialized);
-  $.post("/tweets", serialized);
 });
-
-
-})
-
