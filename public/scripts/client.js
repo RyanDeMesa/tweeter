@@ -28,7 +28,8 @@ const data = [
     created_at: 1461113959088,
   },
 ];
-
+//209349520815
+//var one_day=1000*60*60*24;
 const createTweetElement = (data) => {
   let $tweet = $(`
   <article>
@@ -41,7 +42,7 @@ const createTweetElement = (data) => {
   </header>
   <p>${data.content.text}</p>
   <footer>
-    <time class="left-side">${data.created_at}</time>
+    <time class="left-side">${timeago.format(data.created_at)}</time>
     <div class="icons">
       <i class="fa-solid fa-flag"></i>
       <i class="fa-solid fa-retweet"></i>
@@ -55,7 +56,7 @@ const createTweetElement = (data) => {
 const renderTweets = (tweets) => {
   for (let index in tweets) {
     const render = createTweetElement(tweets[index])
-  $('.tweets-container').append(render);
+  $('.tweets-container').prepend(render);
   console.log(render);
   }
 }
