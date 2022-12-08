@@ -1,7 +1,6 @@
 .new-tweet {
   display: flex;
   padding-top: 50px;
-  padding-bottom: 50px;
   justify-self: center;
   align-items: center;
 }

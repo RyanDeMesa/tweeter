@@ -28,8 +28,7 @@ const data = [
     created_at: 1461113959088,
   },
 ];
-//209349520815
-//var one_day=1000*60*60*24;
+
 const createTweetElement = (data) => {
   let $tweet = $(`
   <article>
@@ -61,6 +60,15 @@ const renderTweets = (tweets) => {
   }
 }
 
+$(document).ready(() => {
+  renderTweets(data)
 
+  $("#tweet-form").submit(function(event) {
+    event.preventDefault();
+    const serialized = $(this).serialize();
+    console.log(serialized);
+    $.post("/tweets", serialized);
+  });
 
-$(document).ready(() => {renderTweets(data)})
+})
+
