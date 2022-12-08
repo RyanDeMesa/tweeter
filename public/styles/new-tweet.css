@@ -1,6 +1,7 @@
 .new-tweet {
   display: flex;
   padding-top: 50px;
+  padding-bottom: 50px;
   justify-self: center;
   align-items: center;
 }
@@ -25,7 +26,6 @@
 
 .new-tweet textarea {
   display: flex;
-  position: relative;
   border-style: none;
   outline: none;
   background-color: #f4f1ec;

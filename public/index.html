@@ -25,6 +25,9 @@
     <!-- New Tweet CSS -->
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
+    <!-- Fale Tweets CSS -->
+    <link rel="stylesheet" href="/styles/tweets-layout.css" type="text/css" />
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -40,12 +43,13 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span>tweeter</span>
-      <div class="right-side">
-        <p class="new-tweet"><b>Write</b>&nbsp;a new tweet</p>
+        <div class="right-side">
+          <p class="new-post"><b>Write</b>&nbsp;a new tweet</p>
           <i class="fa-sharp fa-solid fa-angles-down"></i>
+        </div>
     </nav>
 
-    <header>
+    <header class="top-header">
       <divc class="img">
           <img src="/images/profile-hex.png"> 
       </div>
@@ -67,6 +71,11 @@
           </div>
         </form>
       </section>
+      
+      <section class="tweets-container">
+      </section>
+      
+      
     </main>
   </body>
 </html>
