@@ -1,9 +1,3 @@
-article:hover {
-  box-shadow: 10px 10px 5px rgb(149, 153, 214);
-  scale: 1.001;
-  transition: 0.5s ease-in-out;
-}
-
 article {
   display: flex;
   color: #2d2c28;
@@ -13,6 +7,7 @@ article {
   margin-top: 50px;
   flex-direction: column;
   padding: .5em;
+  flex-wrap: wrap;
 }
 
 article header {
@@ -56,8 +51,8 @@ article footer {
 
 article i {
 color: black;
-display: flex;
-justify-content: space-between;
+/* display: flex; */
+/* justify-content: space-between; */
 font-size: 15px;
 margin-right: 15px;
 }
@@ -66,10 +61,29 @@ article time {
   margin-left: 15px;
 }
 
-
-
+article:hover {
+  display: flex;
+  box-shadow: 10px 10px 5px rgb(149, 153, 214);
+  scale: 1.001;
+  transition: 0.5s ease-in-out;
+  flex-wrap: wrap;
+}
 
 .icons i:hover {
   color: rgba(222, 194, 52, 0.859);
   transition: 0.3s;
+}
+
+@media only screen and (min-width: 1024px) {
+  article {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 5em;
+  }
+  form {
+    width: 45vw;
+  }
+
 }

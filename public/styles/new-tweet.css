@@ -42,3 +42,19 @@
   border: 3px solid red;
   padding: 1em;
 }
+
+@media only screen and (min-width: 1024px) {
+
+  .new-tweet {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 100%;
+    margin-top: 8em;
+    margin-left: 6.5em;
+  }
+  .new-tweet textarea {
+    width: 100%;
+  }
+
+}

@@ -1,21 +1,23 @@
 nav {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 120px;
   width: 100%;
-  background-color: #4056a1;
+  background: none;
   color: #ffffff;
   padding: 1.5em;
   font-family: "Bungee", cursive;
   font-size: 40px;
-  position: fixed;
+  z-index: 1;
 }
 
 div i {
   color: red;
-  margin-top: 0;
-  padding-top: 0;
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
 }
 
 .new-post {
@@ -30,3 +32,21 @@ div i {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 22px;
 }
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056a1;
+    position: fixed;
+  }
+}
+/* ======Incomplete strech work====== */
+
+/* .right-side:hover {
+  padding: 0 20px;
+  transition: 1s;
+  cursor: pointer;
+} */
+
+/* .right-side i:hover {
+  top: 10px;
+} */

@@ -3,10 +3,12 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
- html {
+html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -17,7 +19,7 @@
 body {
   color: #545149;
   background-color: #f4f1ec;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 24px;
 }
 
@@ -28,8 +30,29 @@ body {
 main {
   background-color: #f4f1ec;
   display: flex;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 15px;
+  margin-right: 15px;
   flex-direction: column;
   align-items: center;
+}
+
+@media only screen and (min-width: 1024px) {
+  main {
+    width: 50vw;
+  }
+  section {
+    padding: 15px 0px;
+  }
+
+  .capsule {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95vw;
+    /* margin: 0 auto; */
+    align-items: flex-start;
+  }
+
+  
 }
