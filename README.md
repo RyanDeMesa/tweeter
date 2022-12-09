@@ -16,3 +16,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+!["Screenshot of homepage"](https://github.com/RyanDeMesa/tweeter/blob/master/screenshots/homepage.png?raw=true)
+!["Screenshot of tablet view"](https://github.com/RyanDeMesa/tweeter/blob/master/screenshots/tablet-view.png?raw=true)
+!["Screenshot with new tweet"](https://github.com/RyanDeMesa/tweeter/blob/master/screenshots/new-tweet.png?raw=true)
