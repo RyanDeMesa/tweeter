@@ -27,24 +27,19 @@ const createTweetElement = (data) => {
   return $tweet;
 };
 
-const loadTweets = function() {
-
-  $.get('/tweets', (tweets) => {
+const loadTweets = function () {
+  $.get("/tweets", (tweets) => {
     renderTweets(tweets);
   });
-
 };
 
-
-// loops through tweets and calls createTweetElement to append new tweet to the tweets container
-const renderTweets = function(tweets) {
-  $('.tweets-container').empty();
+const renderTweets = function (tweets) {
+  $(".tweets-container").empty();
 
   for (const user of tweets) {
     const $tweet = createTweetElement(user);
-    $('.tweets-container').prepend($tweet);
+    $(".tweets-container").prepend($tweet);
   }
-
 };
 
 $(document).ready(() => {
