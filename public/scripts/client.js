@@ -1,74 +1,81 @@
-$(document).ready(() => {
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
-  const escape = function (str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
-  
-  const createTweetElement = (data) => {
-    let $tweet = $(`
+const createTweetElement = (data) => {
+  let $tweet = $(`
   <article>
   <header>
-    <div class="left-side">
-      <img class="image" src=${data.user.avatars}"></img>
-      <a>${data.user.name}</a>
-    </div>
-    <a class="right-side">${data.user.handle}</a>
+  <div class="left-side">
+  <img class="image" src=${data.user.avatars}"></img>
+  <a>${data.user.name}</a>
+  </div>
+  <a class="right-side">${data.user.handle}</a>
   </header>
   <p>${escape(data.content.text)}</p>
   <footer>
-    <time class="left-side">${timeago.format(data.created_at)}</time>
-    <div class="icons">
-      <i class="fa-solid fa-flag"></i>
-      <i class="fa-solid fa-retweet"></i>
-      <i class="fa-solid fa-heart"></i>
-    </div>
+  <time class="left-side">${timeago.format(data.created_at)}</time>
+  <div class="icons">
+  <i class="fa-solid fa-flag"></i>
+  <i class="fa-solid fa-retweet"></i>
+  <i class="fa-solid fa-heart"></i>
+  </div>
   </footer>
   </article>`);
-    return $tweet;
-  };
+  return $tweet;
+};
 
-  const renderTweets = (tweets) => {
-    for (let index in tweets) {
-      const render = createTweetElement(tweets[index]);
-      $(".tweets-container").prepend(render);
-      console.log(render);
-    }
-  };
+const loadTweets = function() {
 
-  const loadTweets = () => {
-    $.ajax("/tweets", { method: "GET" }).then(function (tweets) {
-      renderTweets(tweets);
-      console.log("Success: ", tweets);
-    });
-  };
+  $.get('/tweets', (tweets) => {
+    renderTweets(tweets);
+  });
+
+};
 
 
+// loops through tweets and calls createTweetElement to append new tweet to the tweets container
+const renderTweets = function(tweets) {
+  $('.tweets-container').empty();
+
+  for (const user of tweets) {
+    const $tweet = createTweetElement(user);
+    $('.tweets-container').prepend($tweet);
+  }
+
+};
+
+$(document).ready(() => {
   $(".error").slideUp(0);
-
-  loadTweets();
 
   $("#tweet-form").submit(function (event) {
     event.preventDefault();
+
     const maxCharacter = 140;
     const charLength = $(this).find("#tweet-text").val().length;
 
     if (charLength === 0) {
-      $(".error").html("<i class='fa-solid fa-triangle-exclamation'></i> &emsp;Oops! Say something! &emsp;<i class='fa-solid fa-triangle-exclamation'></i>");
+      $(".error").html(
+        "<i class='fa-solid fa-triangle-exclamation'></i> &emsp;Oops! Say something! &emsp;<i class='fa-solid fa-triangle-exclamation'></i>"
+      );
       $(".error").slideDown(400);
-      
     } else if (charLength > maxCharacter) {
-      $(".error").html("<i class='fa-solid fa-triangle-exclamation'></i> &emsp;Oops! Too many characters! &emsp;<i class='fa-solid fa-triangle-exclamation'></i>");
+      $(".error").html(
+        "<i class='fa-solid fa-triangle-exclamation'></i> &emsp;Oops! Too many characters! &emsp;<i class='fa-solid fa-triangle-exclamation'></i>"
+      );
       $(".error").slideDown(400);
     } else {
-      let serialized = $(this).serialize();
-      console.log(serialized);
-      $.post("/tweets", serialized);
+      const serialized = $(this).serialize();
+
+      $.post("/tweets", serialized).then(() => {
+        loadTweets();
+      });
       $(".error").slideUp(0);
-      loadTweets();
+      $("#tweet-text").val("");
+      $(".counter").html(140);
     }
-    $("#tweet-text").val("")
-    $(".counter").html(140);
   });
+  loadTweets();
 });
